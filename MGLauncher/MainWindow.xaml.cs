@@ -26,7 +26,7 @@ namespace MGLauncher
         {
             string launchPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
-            launchPath = Path.GetFullPath(Path.Combine(launchPath, @"..\..\..\MGTest\bin\Debug\net6.0-windows\MGTest.exe"));
+            launchPath = Path.GetFullPath(Path.Combine(launchPath, @"..\..\..\MGTest\bin\Release\net6.0-windows\MGTest.exe"));
 
             //C:\Users\The1Wolfcast\source\repos\MGTest\MGLauncher\bin\Debug
             //start here ^
