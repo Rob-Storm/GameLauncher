@@ -65,6 +65,7 @@ namespace MGLauncher
 
         private void txtbxArgs_Changed(object sender, TextChangedEventArgs e)
         {
+            //Use "crash" to test out the error messagebox
             gameArgs = txtbxArgs.Text;
         }
 

@@ -13,7 +13,6 @@ namespace MGTest
         private SpriteBatch _spriteBatch;
 
         private SpriteFont font;
-
         public string[] check;
 
         public Game1()
