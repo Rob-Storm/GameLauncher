@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +19,22 @@ namespace MGLauncher
         public MainWindow()
         {
             InitializeComponent();
+            OnComponentInitialized();
+        }
+
+        void OnComponentInitialized()
+        {
+            string launchPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+            launchPath = Path.GetFullPath(Path.Combine(launchPath, @"..\..\..\MGTest\bin\Debug\net6.0-windows\MGTest.exe"));
+
+            //C:\Users\The1Wolfcast\source\repos\MGTest\MGLauncher\bin\Debug
+            //start here ^
+
+            //C:\Users\The1Wolfcast\source\repos\MGTest\MGTest\bin\Debug\net6.0-windows\MGTest.exe
+            //get to here ^
+
+            txtbxGamePath.Text = launchPath;
         }
 
         private void btnLaunchGame_Click(object sender, RoutedEventArgs e)
@@ -32,34 +51,43 @@ namespace MGLauncher
 
             int exitCode;
 
-            if (!keepLauncherOpen)
+            if(File.Exists(gamePath))
             {
-                this.ShowInTaskbar = false;
-                this.WindowState = WindowState.Minimized;
-            }
-
-            using (Process proc = Process.Start(game))
-            {
-                proc.WaitForExit();
-
                 if (!keepLauncherOpen)
                 {
-                    this.ShowInTaskbar = true;
-                    this.WindowState = WindowState.Normal;
+                    this.ShowInTaskbar = false;
+                    this.WindowState = WindowState.Minimized;
                 }
 
-                exitCode = proc.ExitCode;
-
-                if(exitCode != 0)
+                using (Process proc = Process.Start(game))
                 {
-                    MessageBox.Show($"An error occured! Exit Code {exitCode}", "Game Crashed", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    MessageBox.Show($"Game closed with Exit Code {exitCode}", "Game Closed", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                    proc.WaitForExit();
 
+                    if (!keepLauncherOpen)
+                    {
+                        this.ShowInTaskbar = true;
+                        this.WindowState = WindowState.Normal;
+                    }
+
+                    exitCode = proc.ExitCode;
+
+                    if (exitCode != 0)
+                    {
+                        MessageBox.Show($"An error occured! Exit Code {exitCode}", "Game Crashed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Game closed with Exit Code {exitCode}", "Game Closed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                }
             }
+
+            else
+            {
+                MessageBox.Show($"Game is not located at: {gamePath}", "Game not found", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
 
 

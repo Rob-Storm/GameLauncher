@@ -8,12 +8,12 @@
         Title="MonoGame Launcher" Height="400" Width="525" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="btnLaunchGame" Content="Play!" HorizontalAlignment="Left" Margin="450,325,0,0" VerticalAlignment="Top" Width="45" Height="25" Click="btnLaunchGame_Click"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="This is a launcher I made for a monogame project." VerticalAlignment="Top" Margin="0,30,0,0" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="This is a generic launcher I made for a monogame project." VerticalAlignment="Top" Margin="0,30,0,0" />
         <CheckBox x:Name="chkLauncherOpen" Content="Keep Launcher Open While Playing?" HorizontalAlignment="Center" Margin="0,228,0,0" VerticalAlignment="Top" Checked="chkLauncherOpen_Checked"/>
         <TextBox x:Name="txtbxArgs" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350" TextChanged="txtbxArgs_Changed" Height="18" Margin="0,192,0,0"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,171,0,0" TextWrapping="Wrap" Text="Command Line Arguments:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,106,0,0" TextWrapping="Wrap" Text="Game Path:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtbxGamePath" HorizontalAlignment="Center" Margin="0,127,0,0" TextWrapping="Wrap" Text="C:\Users\The1Wolfcast\source\repos\MGTest\MGTest\bin\Debug\net6.0-windows\MGTest.exe" VerticalAlignment="Top" Width="350" Height="18" AcceptsReturn="False" TextChanged="txtbxGamePath_TextChanged"/>
+        <TextBox x:Name="txtbxGamePath" HorizontalAlignment="Center" Margin="0,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350" Height="18" AcceptsReturn="False" TextChanged="txtbxGamePath_TextChanged"/>
         <Button x:Name="btnBrowsePath" Content="Browse" HorizontalAlignment="Left" Margin="442,126,0,0" VerticalAlignment="Top" Click="btnBrowsePath_Click"/>
     </Grid>
 </Window>
